@@ -38,12 +38,20 @@ class VmsServiceApplicationTests {
         testRestTemplate.getRestTemplate().setRequestFactory(new HttpComponentsClientHttpRequestFactory());
     }
 
-    private void logAsPrettyJson(Object input) {
+    private void logAsPrettyJson(ResponseEntity<String> input) {
+
         try {
             String formattedJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(input);
             log.info(formattedJson);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
+        }
+
+        try {
+            ApiResponseModel<?> apiResponseModel = objectMapper.readValue(input.getBody(), ApiResponseModel.class);
+            log.info("Response body: \n {}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(apiResponseModel));
+        } catch (Exception e) {
+            // do nothing
         }
     }
 
