@@ -1,0 +1,9 @@
+# VMS Service Application
+
+## Local development
+- Start docker desktop
+- Run link:src/test/java/com/strata/vms/vmsservice/TestVmsServiceApplication.java[TestVmsServiceApplication.java] from IDE
+
+## Running tests
+- Start docker desktop
+- Run link:src/test/java/com/strata/vms/vmsservice/VmsServiceApplicationTests.java[VmsServiceApplicationTests.java] from IDE
